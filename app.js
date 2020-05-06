@@ -10,7 +10,10 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 
+const goodsRouter = require('./router/goodsRouter');
 const userrouter = require('./router/userRouter');
+
+app.use('/goods', goodsRouter);
 app.use('/user', userrouter);
 
 app.listen(3000, () => {
