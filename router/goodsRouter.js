@@ -12,13 +12,22 @@ router.post('/inc', (req, res) => {
             res.send({err:-1,msg:'添加失败'})
         })
 })
-//猜你喜欢接口
+//随机获取商品接口
 router.get('/', (req, res) => {
-    goodsModel.find().then((data) => {
-        res.send({status:0,list:data})
+    goodsModel.aggregate([{$sample:{size:10}}]).then((data) => {
+        res.send({err:0,list:data})
     }).catch(() => {
-        res.send({status:-1,msg:'加载商品失败'})
+        res.send({err:-1,msg:'加载商品失败'})
     })
+})
+//商品详情接口
+router.post('/detail', (req, res) => {
+    let { _id } = req.body;
+    if (_id) {
+        goodsModel.findOne({_id}).then((data) => {
+            res.send({err:0,data:data})
+        })
+    }
 })
 
 module.exports = router;
