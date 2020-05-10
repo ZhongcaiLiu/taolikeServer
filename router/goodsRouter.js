@@ -29,5 +29,13 @@ router.post('/detail', (req, res) => {
         })
     }
 })
+router.post('/CartDetail', (req, res) => {
+    let { goodsid } = req.body;
+    if (goodsid) {
+        goodsModel.find({_id:{$in:goodsid}}).then((data) => {
+            res.send({err:0,data:data})
+        })
+    }
+})
 
 module.exports = router;
