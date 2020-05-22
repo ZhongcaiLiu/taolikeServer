@@ -37,5 +37,4 @@ router.post('/CartDetail', (req, res) => {
         })
     }
 })
-
 module.exports = router;

@@ -11,10 +11,12 @@ app.use(bodyParser.json())
 
 
 const goodsRouter = require('./router/goodsRouter');
-const userrouter = require('./router/userRouter');
+const userRouter = require('./router/userRouter');
+const addressRouter=require('./router/addressRouter')
 
 app.use('/goods', goodsRouter);
-app.use('/user', userrouter);
+app.use('/user', userRouter);
+app.use('/address',addressRouter)
 
 app.listen(3000, () => {
     console.log('serve start')
