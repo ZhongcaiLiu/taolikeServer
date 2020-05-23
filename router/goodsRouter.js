@@ -37,4 +37,14 @@ router.post('/CartDetail', (req, res) => {
         })
     }
 })
+
+//分类查询商品
+router.post('/category', (req, res) => {
+    let { typeid } = req.body;
+    goodsModel.find({ typeid }).then((data) => {
+        res.send({err:0,data:data})
+    }).catch(() => {
+        res.send({err:-1,msg:'查询失败！'})
+    })
+})
 module.exports = router;

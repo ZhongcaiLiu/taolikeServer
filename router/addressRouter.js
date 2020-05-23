@@ -52,7 +52,7 @@ router.post('/editSave', (req, res) => {
 //删除收货地址接口
 router.post('/del', (req, res) => {
     let { _id } = req.body;
-    addressModel.remove({ _id }).then(() => {
+    addressModel.deleteOne({ _id }).then(() => {
         res.send({err:0,msg:'删除成功！'})
     }).catch(() => {
         res.send({err:-1,msg:'删除失败'})
