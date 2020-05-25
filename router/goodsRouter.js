@@ -29,6 +29,7 @@ router.post('/detail', (req, res) => {
         })
     }
 })
+//查询一个数组用$in
 router.post('/CartDetail', (req, res) => {
     let { goodsid } = req.body;
     if (goodsid) {
@@ -42,6 +43,16 @@ router.post('/CartDetail', (req, res) => {
 router.post('/category', (req, res) => {
     let { typeid } = req.body;
     goodsModel.find({ typeid }).then((data) => {
+        res.send({err:0,data:data})
+    }).catch(() => {
+        res.send({err:-1,msg:'查询失败！'})
+    })
+})
+//关键字搜索
+router.post('/search', (req, res) => {
+    let { kw } = req.body;
+    let reg = new RegExp(kw);
+    goodsModel.find({ $or: [{ name: { $regex: reg } }, { typename: { $regex: reg } }]}).then((data) => {
         res.send({err:0,data:data})
     }).catch(() => {
         res.send({err:-1,msg:'查询失败！'})
