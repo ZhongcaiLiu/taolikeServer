@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"taolike.goods"}],"uuid":"137c6406c79f457e9ceca95a5e6d5b8f"}
